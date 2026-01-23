@@ -8,10 +8,9 @@ export PLAYWRIGHT_BROWSERS_PATH="/usr/local/share/playwright"
 mkdir -p "$NODE_DIR"
 export PATH="$NODE_DIR/bin:$BUN_DIR/bin:$GO_DIR/bin:$HOME/.cargo/bin:$PATH"
 
-echo "export PATH=\"$NODE_DIR/bin:$BUN_DIR/bin:$GO_DIR/bin:\$HOME/.cargo/bin:\$PATH\"" > /home/container/.bashrc
+echo "export PATH=\"$NODE_DIR/bin:$BUN_DIR/bin:$GO_DIR/bin:\$PATH\"" > /home/container/.bashrc
 echo "export NODE_PATH=\"$NODE_DIR/lib/node_modules\"" >> /home/container/.bashrc
 echo "export PLAYWRIGHT_BROWSERS_PATH=\"$PLAYWRIGHT_BROWSERS_PATH\"" >> /home/container/.bashrc
-echo "source \$HOME/.cargo/env 2>/dev/null" >> /home/container/.bashrc
 
 if [ ! -z "${NODE_VERSION}" ]; then
     [ -x "$NODE_DIR/bin/node" ] && CURRENT_VER=$("$NODE_DIR/bin/node" -v) || CURRENT_VER="none"
@@ -62,7 +61,7 @@ EOF
 echo -e "${C_RESET}"
 
 echo -e "${C_BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${C_RESET}"
-echo -e "${C_WHITE}                    VERLANG-RUNTIME TERMINAL${C_RESET}"
+echo -e "${C_WHITE}                    MULTI-RUNTIME TERMINAL${C_RESET}"
 echo -e "${C_BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${C_RESET}"
 echo ""
 
@@ -149,12 +148,10 @@ print_runtime "Bun" "echo v\$(bun -v)"
 print_runtime "Deno" "deno --version | head -n1 | awk '{print \$2}'"
 print_runtime "Python" "python3 --version | awk '{print \$2}'"
 print_runtime "Go" "go version | awk '{print \$3}' | sed 's/go//'"
-print_runtime "Rust" "rustc --version 2>/dev/null | awk '{print \$2}' || echo 'Not Installed'"
 print_runtime "Zig" "zig version"
 print_runtime "Ruby" "ruby -v | awk '{print \$2}'"
 print_runtime "PHP" "php -v | head -n1 | awk '{print \$2}'"
 print_runtime "Java" "java -version 2>&1 | head -n1 | awk -F '\"' '{print \$2}'"
-print_runtime "Kotlin" "kotlin -version 2>&1 | head -n1 | awk '{print \$3}' || echo 'Not Installed'"
 print_runtime "Playwright" "playwright --version | head -n1"
 
 echo ""
@@ -179,7 +176,7 @@ print_runtime "CF Tunnel" "echo '$CF_STATUS'"
 echo ""
 echo -e "${C_BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${C_RESET}"
 echo -e "${C_YELLOW}  📞 Telegram: ${C_CYAN}t.me/verlangid11${C_RESET}"
-echo -e "${C_YELLOW}  🟥 Youtube  : ${C_CYAN}https://www.youtube.com/@verlangid${C_RESET}"
+echo -e "${C_YELLOW}  ▶️ Youtube  : ${C_CYAN}https://www.youtube.com/@verlangid${C_RESET}"
 echo -e "${C_YELLOW}  💼 TikTok  : ${C_CYAN}tiktok.com/@verlangid${C_RESET}"
 echo -e "${C_BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${C_RESET}"
 echo ""
