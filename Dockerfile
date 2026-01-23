@@ -11,10 +11,9 @@ ENV DEBIAN_FRONTEND=noninteractive \
     GO_VERSION=1.24.0 \
     PYTHON_VERSION=3.13.0 \
     DENO_INSTALL=/usr/local \
-    ZIG_VERSION=0.11.0 \
-    RUST_VERSION=1.75.0
+    ZIG_VERSION=0.11.0
 
-ENV PATH="$NODE_INSTALL_DIR/bin:$BUN_INSTALL/bin:/usr/local/go/bin:$HOME/.cargo/bin:$DENO_INSTALL/bin:/usr/local/zig:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ENV PATH="$NODE_INSTALL_DIR/bin:$BUN_INSTALL/bin:/usr/local/go/bin:$DENO_INSTALL/bin:/usr/local/zig:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         curl wget git zip unzip tar gzip bzip2 p7zip-full zstd \
@@ -65,8 +64,6 @@ RUN cd /tmp \
     && ln -s /usr/local/zig/zig /usr/local/bin/zig \
     && rm zig-linux-x86_64-${ZIG_VERSION}.tar.xz
 
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain ${RUST_VERSION} --profile minimal
-
 RUN apt-get update && apt-get install -y --no-install-recommends \
         ruby ruby-dev \
     && gem install bundler \
@@ -78,7 +75,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-        default-jdk kotlin \
+        default-jdk \
     && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p $PLAYWRIGHT_BROWSERS_PATH \
