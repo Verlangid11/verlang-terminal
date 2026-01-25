@@ -28,10 +28,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         zip unzip tar gzip bzip2 p7zip-full zstd rar unrar xz-utils \
-        jq yq nano vim sudo \
+        jq nano vim sudo \
         net-tools iputils-ping dnsutils whois traceroute \
         procps htop iotop iftop nethogs nload \
-        screen tmux byobu zsh fish \
+        screen tmux \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
